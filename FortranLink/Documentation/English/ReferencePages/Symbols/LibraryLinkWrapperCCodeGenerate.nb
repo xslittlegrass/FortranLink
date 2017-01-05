@@ -1,0 +1,513 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16947,        504]
+NotebookOptionsPosition[     12593,        373]
+NotebookOutlinePosition[     14998,        435]
+CellTagsIndexPosition[     14913,        430]
+WindowTitle->LibraryLinkWrapperCCodeGenerate
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FORTRAN LINK SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"Loading Fortran subroutine using FortranLink\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FortranLink/guide/Loading Fortran subroutine using \
+FortranLink"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"FortranLink/ref/LibraryLinkWrapperCCodeGenerate\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FortranLink/ref/LibraryLinkWrapperCCodeGenerate"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FortranLink/ref/\
+LibraryLinkWrapperCCodeGenerate.html"], StandardForm]], "Input", 
+              TextClipboardType -> "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$3405], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FortranLink/ref/LibraryLinkWrapperCCodeGenerate", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["LibraryLinkWrapperCCodeGenerate", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       RowBox[{"LibraryLinkWrapperCCodeGenerate", "[", 
+        RowBox[{"cdeclaration", ",", "libraryFunctionName"}], "]"}], " "}]], 
+      "InlineFormula"],
+     " \[LineSeparator]generate the C code for the LibraryLink wrapper."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"LibraryLinkWrapperCCodeGenerate", "[", 
+       RowBox[{
+       "cdeclaration", ",", "libraryFunctionName", ",", " ", "codeSnippet"}], 
+       "]"}]], "InlineFormula"],
+     "\[LineSeparator]generate the C code for the LibraryLink wrapper, insert \
+codeSnippet into the code."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(3)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1735121244],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(3)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1502305295],
+
+Cell["Load package", "ExampleText",
+ CellID->1452923014],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<FortranLink`\>\"", "]"}]], "Input",
+ CellLabel->"In[44]:=",
+ CellID->387854635],
+
+Cell["Fortran code for adding two integer numbers.", "ExampleText",
+ CellID->1251605981],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "forCode", "=", "\[IndentingNewLine]", 
+   "\"\<!fadd.f90\nsubroutine add(a,b,sum)\n    implicit none\n    integer \
+a,b,sum\n    sum=a+b\n    return\nend subroutine\n\>\""}], ";"}]], "Input",
+ CellLabel->"In[45]:=",
+ CellID->1059981800],
+
+Cell["\<\
+generate the LibraryLink C wrapper code that calls this Fortran code.\
+\>", "ExampleText",
+ CellID->247273733],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LibraryLinkWrapperCCodeGenerate", "[", 
+  RowBox[{
+  "\"\<void add(int* a, int* b, int* sum)\>\"", ",", "\"\<myadd\>\""}], 
+  "]"}]], "Input",
+ CellLabel->"In[46]:=",
+ CellID->1737260735],
+
+Cell[BoxData["\<\"#include \
+\\\"/Applications/Mathematica.app/Contents/SystemFiles/IncludeFiles/C/\
+WolframLibrary.h\\\"\\n\\n  DLLEXPORT mint WolframLibrary_getVersion(){\\n    \
+return WolframLibraryVersion;\\n  }\\n  DLLEXPORT int \
+WolframLibrary_initialize(WolframLibraryData libData){\\n    return 0;\\n  \
+}\\nextern \\\"C\\\"{ void add(int* a, int* b, int* sum);}\\n\\nEXTERN_C \
+DLLEXPORT int myadd(WolframLibraryData libData, mint Argc, MArgument* Args, \
+MArgument Res)\\n{\\n\\n/*  receive arguments from Mathematica side  */\\nint \
+ a = MArgument_getInteger(Args[0]);\\nint  b = MArgument_getInteger(Args[1]);\
+\\nint  sum = MArgument_getInteger(Args[2]);\\n\\n/*  call external function  \
+*/\\n\\nadd(&a, &b, &sum);\\n/*  code snippet inserted  */\\n\\n;\\n/*  clean \
+the temperoray MTensor  */\\n\\n\\n/*  library function return  \
+*/\\n\\nMArgument_setInteger(Res, 0);\\nreturn \
+LIBRARY_NO_ERROR;\\n}\\n\"\>"], "Output",
+ ImageSize->{545, 666},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[46]=",
+ CellID->504237883]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->149772745],
+
+Cell["Example for adding two vectors", "ExampleText",
+ CellID->379690931],
+
+Cell["Fortran code", "ExampleText",
+ CellID->1757599526],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "forCode", "=", 
+   "\"\<\n!addvec.f90\n\nsubroutine addVec(a,b,n)\nimplicit none\ninteger n\n\
+real(8),dimension(n)::a,b\n\na(:)=a(:)+b(:)\n\nreturn\nend subroutine addVec\n\
+\>\""}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1291562080],
+
+Cell["\<\
+Generate the wrapper C code. Notice the function is declared as void \
+addVec(int a[], double b[], int* n). Both 1D and 2D array should declare as \
+double a[].\
+\>", "ExampleText",
+ CellID->1337668997],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LibraryLinkWrapperCCodeGenerate", "[", 
+  RowBox[{
+  "\"\<void addVec(int a[], double b[], int* n)\>\"", ",", "\"\<myadd\>\""}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1920153817],
+
+Cell[BoxData["\<\"#include \
+\\\"/Applications/Mathematica.app/Contents/SystemFiles/IncludeFiles/C/\
+WolframLibrary.h\\\"\\n\\n  DLLEXPORT mint WolframLibrary_getVersion(){\\n    \
+return WolframLibraryVersion;\\n  }\\n  DLLEXPORT int \
+WolframLibrary_initialize(WolframLibraryData libData){\\n    return 0;\\n  \
+}\\nextern \\\"C\\\"{ void addVec(int a[], double b[], int* \
+n);}\\n\\nEXTERN_C DLLEXPORT int myadd(WolframLibraryData libData, mint Argc, \
+MArgument* Args, MArgument Res)\\n{\\n\\n/*  receive arguments from \
+Mathematica side  */\\nMTensor _ta = MArgument_getMTensor(Args[0]);\\nmint* a \
+= libData->MTensor_getIntegerData(_ta);\\nMTensor _tb = \
+MArgument_getMTensor(Args[1]);\\ndouble* b = \
+libData->MTensor_getRealData(_tb);\\nint  n = \
+MArgument_getInteger(Args[2]);\\n\\n/*  call external function  \
+*/\\n\\naddVec(a, b, &n);\\n/*  code snippet inserted  */\\n\\n;\\n/*  clean \
+the temperoray MTensor  \
+*/\\n\\nlibData->MTensor_disownAll(_ta);\\nlibData->MTensor_disownAll(_tb);\\\
+n\\n/*  library function return  */\\n\\nMArgument_setInteger(Res, \
+0);\\nreturn LIBRARY_NO_ERROR;\\n}\\n\"\>"], "Output",
+ ImageSize->{545, 738},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1777532927]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->578334765],
+
+Cell["Example of matrix dot product.", "ExampleText",
+ CellID->561409033],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "forCode", "=", 
+   "\"\<\n!dot.f90\n\nsubroutine dot(a,b,c,n)\nimplicit none\ninteger n\n\
+real(8),dimension (n,n):: a, b, c\n\nc=matmul(a,b)\n\nreturn\nend subroutine \
+dot\n\>\""}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->354240162],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LibraryLinkWrapperCCodeGenerate", "[", 
+  RowBox[{
+  "\"\<void dot(double a[], double b[], double c[] ,int* n)\>\"", ",", 
+   "\"\<mydot\>\""}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1689649797],
+
+Cell[BoxData["\<\"#include \
+\\\"/Applications/Mathematica.app/Contents/SystemFiles/IncludeFiles/C/\
+WolframLibrary.h\\\"\\n\\n  DLLEXPORT mint WolframLibrary_getVersion(){\\n    \
+return WolframLibraryVersion;\\n  }\\n  DLLEXPORT int \
+WolframLibrary_initialize(WolframLibraryData libData){\\n    return 0;\\n  \
+}\\nextern \\\"C\\\"{ void dot(double a[], double b[], double c[] ,int* \
+n);}\\n\\nEXTERN_C DLLEXPORT int mydot(WolframLibraryData libData, mint Argc, \
+MArgument* Args, MArgument Res)\\n{\\n\\n/*  receive arguments from \
+Mathematica side  */\\nMTensor _ta = MArgument_getMTensor(Args[0]);\\ndouble* \
+a = libData->MTensor_getRealData(_ta);\\nMTensor _tb = \
+MArgument_getMTensor(Args[1]);\\ndouble* b = \
+libData->MTensor_getRealData(_tb);\\nMTensor _tc = \
+MArgument_getMTensor(Args[2]);\\ndouble* c = \
+libData->MTensor_getRealData(_tc);\\nint  n = \
+MArgument_getInteger(Args[3]);\\n\\n/*  call external function  \
+*/\\n\\ndot(a, b, c, &n);\\n/*  code snippet inserted  */\\n\\n;\\n/*  clean \
+the temperoray MTensor  \
+*/\\n\\nlibData->MTensor_disownAll(_ta);\\nlibData->MTensor_disownAll(_tb);\\\
+nlibData->MTensor_disownAll(_tc);\\n\\n/*  library function return  \
+*/\\n\\nMArgument_setInteger(Res, 0);\\nreturn \
+LIBRARY_NO_ERROR;\\n}\\n\"\>"], "Output",
+ ImageSize->{545, 810},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1763740723]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Loading Fortran subroutine using FortranLink"]],
+   "paclet:FortranLink/guide/Loading Fortran subroutine using FortranLink"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1279855286]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"LibraryLinkWrapperCCodeGenerate",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:FortranLink/guide/FortranLink", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2016, 5, 18, 17, 16, 5.553808}", 
+    "history" -> {"0.0", "", "", ""}, "context" -> "FortranLink`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Fortran Link Symbol", "language" -> "en", "paclet" -> "FortranLink", 
+    "status" -> "None", "summary" -> 
+    "LibraryLinkWrapperCCodeGenerate[cdeclaration, libraryFunctionName] \
+generate the C code for the LibraryLink wrapper. \
+LibraryLinkWrapperCCodeGenerate[cdeclaration, libraryFunctionName, \\ \
+codeSnippet] generate the C code for the LibraryLink wrapper, insert \
+codeSnippet into the code.", "synonyms" -> {}, "title" -> 
+    "LibraryLinkWrapperCCodeGenerate", "titlemodifier" -> "", "windowtitle" -> 
+    "LibraryLinkWrapperCCodeGenerate", "type" -> "Symbol", "uri" -> 
+    "FortranLink/ref/LibraryLinkWrapperCCodeGenerate"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 10, \
+2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> 
+  "10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4776, 132, 388, 15, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1735121244]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 14769, 423}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[603, 21, 3225, 79, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[3831, 102, 74, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[3908, 105, 843, 23, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4776, 132, 388, 15, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1735121244],
+Cell[CellGroupData[{
+Cell[5189, 151, 196, 6, 70, "ExampleSection",
+ CellID->1502305295],
+Cell[5388, 159, 56, 1, 70, "ExampleText",
+ CellID->1452923014],
+Cell[5447, 162, 121, 3, 70, "Input",
+ CellID->387854635],
+Cell[5571, 167, 88, 1, 70, "ExampleText",
+ CellID->1251605981],
+Cell[5662, 170, 274, 7, 70, "Input",
+ CellID->1059981800],
+Cell[5939, 179, 120, 3, 70, "ExampleText",
+ CellID->247273733],
+Cell[CellGroupData[{
+Cell[6084, 186, 211, 6, 70, "Input",
+ CellID->1737260735],
+Cell[6298, 194, 1075, 18, 70, "Output",
+ CellID->504237883]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7410, 217, 125, 3, 70, "ExampleDelimiter",
+ CellID->149772745],
+Cell[7538, 222, 73, 1, 70, "ExampleText",
+ CellID->379690931],
+Cell[7614, 225, 56, 1, 70, "ExampleText",
+ CellID->1757599526],
+Cell[7673, 228, 282, 8, 70, "Input",
+ CellID->1291562080],
+Cell[7958, 238, 212, 5, 70, "ExampleText",
+ CellID->1337668997],
+Cell[CellGroupData[{
+Cell[8195, 247, 216, 6, 70, "Input",
+ CellID->1920153817],
+Cell[8414, 255, 1265, 22, 70, "Output",
+ CellID->1777532927]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9728, 283, 125, 3, 70, "ExampleDelimiter",
+ CellID->578334765],
+Cell[9856, 288, 73, 1, 70, "ExampleText",
+ CellID->561409033],
+Cell[9932, 291, 281, 8, 70, "Input",
+ CellID->354240162],
+Cell[CellGroupData[{
+Cell[10238, 303, 229, 6, 70, "Input",
+ CellID->1689649797],
+Cell[10470, 311, 1413, 25, 70, "Output",
+ CellID->1763740723]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[11922, 341, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11990, 346, 276, 12, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[12269, 360, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[12303, 362, 248, 6, 70, "MoreAbout",
+ CellID->1279855286]
+}, Open  ]],
+Cell[12566, 371, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
