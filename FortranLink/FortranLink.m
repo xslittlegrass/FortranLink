@@ -27,8 +27,8 @@ Needs["SymbolicC`"];
 
 (*setup the compiler path*)
 
-$FortranLinkCCompiler = {"Compiler" -> "intel", "Path" -> "/opt/intel/bin/icc"};
-$FortranLinkFCompiler = {"Compiler" -> "intel", "Path" -> "/opt/intel/bin/ifort"};
+$FortranLinkCCompiler = {"Compiler" -> "intel", "Path" -> "icc"};
+$FortranLinkFCompiler = {"Compiler" -> "intel", "Path" -> "ifort"};
 
 
 (* wolfram include file path*)
@@ -213,7 +213,11 @@ CompileFortranLibraryLink[libraryLinkWrapperSourcePath_, fortranSourcePath_List,
   msg = shellCommand[OptionValue[$FortranLinkCCompiler,"Path"] <> " -fPIC -c " <> cOptions <> " " <> cName];
   If[msg!="",Print[msg];Abort[]];
   (*======link object files to get dynamic lib===*)
-  msg = shellCommand[OptionValue[$FortranLinkFCompiler,"Path"] <> " -fPIC -lstdc++ -dynamiclib *.o -o " <> FileBaseName[cName] <> ".dylib"];
+  msg =Switch[$OperatingSystem,
+  "Unix",shellCommand[OptionValue[$FortranLinkFCompiler,"Path"] <> " -fPIC -lstdc++ -shared *.o -o " <> FileBaseName[cName] <> ".dylib"],
+  "MacOSX",shellCommand[OptionValue[$FortranLinkFCompiler,"Path"] <> " -fPIC -lstdc++ -dynamiclib *.o -o " <> FileBaseName[cName] <> ".dylib"],
+  _,Print["System not supported"];Abort[];
+  ];
   If[msg!="",Print[msg];Abort[]];
   (*===change back to original dir and return the dynamic library path=========*)
   SetDirectory[currentDir];
